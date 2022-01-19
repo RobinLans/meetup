@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Event from "./components/Event";
 import Modal from "./components/Modal";
+import { eventsCtx } from "./Context";
+
 function App() {
     const [events, setEvents] = useState([
         {
@@ -40,30 +42,33 @@ function App() {
 
     function eventHasUpdated(id) {
         const moddedEvents = [...events];
-		moddedEvents[events.findIndex((item) => item.id === id)].joined = !moddedEvents[events.findIndex((item) => item.id === id)].joined;
-		setEvents([...events]);
+        moddedEvents[events.findIndex((item) => item.id === id)].joined =
+            !moddedEvents[events.findIndex((item) => item.id === id)].joined;
+        setEvents([...events]);
     }
 
     return (
-        <div className="w-screen p-[5%]">
-            {!!modal && <Modal data={modal} canceled={canceled} />}
-            <center>
-                {events.map((event, index) => {
-                    return (
-                        <div
-                            key={"test" + index}
-                            onClick={() => fixModal(event.id)}
-                            className="w-1/3 bg-purple-300"
-                        >
-                            <Event
-                                data={event}
-                                updateParent={eventHasUpdated}
-                            />
-                        </div>
-                    );
-                })}
-            </center>
-        </div>
+        <eventsCtx.Provider value={{ events, setEvents }}>
+            <div className="w-screen p-[5%]">
+                {!!modal && <Modal data={modal} canceled={canceled} />}
+                <center>
+                    {events.map((event, index) => {
+                        return (
+                            <div
+                                key={"test" + index}
+                                onClick={() => fixModal(event.id)}
+                                className="w-1/3 bg-purple-300"
+                            >
+                                <Event
+                                    data={event}
+                                    updateParent={eventHasUpdated}
+                                />
+                            </div>
+                        );
+                    })}
+                </center>
+            </div>
+        </eventsCtx.Provider>
     );
 }
 

@@ -4,7 +4,6 @@ import InputField from "./InputField";
 function Event(props) {
     const [comments, setComments] = useState(props.data.comments); //Get from props
 
-
     return (
         <Modal
             size="large"
