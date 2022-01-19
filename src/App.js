@@ -3,6 +3,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import Event from './Event';
 import Comment from './Comment';
+import Modal from './Modal';
 
 function App() {
 	const [events, setEvents] = useState([
@@ -18,7 +19,7 @@ function App() {
 			],
 		},
 		{
-			id: 1,
+			id: 2,
 			name: 'Bilkrockar',
 			joined: false,
 			location: 'Angered',
@@ -29,7 +30,7 @@ function App() {
 			],
 		},
 		{
-			id: 1,
+			id: 3,
 			name: 'Bilkrockar',
 			joined: false,
 			location: 'Angered',
@@ -42,15 +43,20 @@ function App() {
 	]); //Download from localstorage
 	const [modal, setModal] = useState(false);
 
-	console.log(modal);
+	function canceled() {
+		setModal(false);
+	}
 
 	return (
 		<div className="w-screen p-[5%]">
-			{!!modal && <Comment data={modal}/>}
+			{!!modal && <Modal data={modal} canceled={canceled}/>}
 			<center>
 				{events.map((event, index) => {
 					return (
-						<Event key={"test" + index} data={event} onClick={() => console.log(79)}/>
+						<div onClick={() => setModal(event.id)}>
+							<Event key={"test" + index} data={event} />
+						</div>
+
 					);
 				})}
 			</center>
