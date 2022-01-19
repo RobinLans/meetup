@@ -21,10 +21,10 @@ function Event(props) {
             <h2 className="text-xl">{props.data.location}</h2>
             <h2 className="text-xl">{date}</h2>
 			{props.data.joined &&
-				<Button fluid color="red" onClick={() => props.updateParent(props.data.id)}>Lämna</Button>
+				<Button fluid color="red" onClick={() => props.updateParent(props.data.id)}>Leave</Button>
 			}
 			{!props.data.joined &&
-				<Button fluid color="green" onClick={() => props.updateParent(props.data.id)}>Gå Med</Button>
+				<Button fluid color="green" onClick={() => props.updateParent(props.data.id)}>Join</Button>
 			}
         </Segment>
     );
