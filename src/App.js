@@ -51,9 +51,13 @@ function App() {
 		setModal(false);
 	}
 
+	function eventHasUpdated(id) {
+		console.log(id);
+	}
+
 	return (
 		<div className="w-screen p-[5%]">
-			{!!modal && <Modal data={modal} canceled={canceled} />}
+			{!!modal && <Modal data={modal} canceled={canceled}/>}
 			<center>
 				{events.map((event, index) => {
 					return (
@@ -62,7 +66,7 @@ function App() {
 							onClick={() => fixModal(event.id)}
 							className="w-1/2 bg-purple-300"
 						>
-							<Event data={event} />
+							<Event data={event} updateParent={eventHasUpdated}/>
 						</div>
 
 					);

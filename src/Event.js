@@ -11,6 +11,9 @@ function Event(props) {
 
 	const [date,setDate] = useState(new Date(props.data.time*1000).toLocaleDateString("sv"))
 
+	useEffect(() => {
+		props.updateParent(props.data.id);
+	}, []);
 
 	return (
 		<Segment>
