@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Segment } from "semantic-ui-react";
+
 
 function Event(props) {
     const [content, setContent] = useState(props.data); //Get from props
