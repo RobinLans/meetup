@@ -43,18 +43,26 @@ function App() {
 	]); //Download from localstorage
 	const [modal, setModal] = useState(false);
 
+	function fixModal(id) {
+		setModal(events[events.findIndex(item => item.id === id)]);
+	}
+
 	function canceled() {
 		setModal(false);
 	}
 
 	return (
 		<div className="w-screen p-[5%]">
-			{!!modal && <Modal data={modal} canceled={canceled}/>}
+			{!!modal && <Modal data={modal} canceled={canceled} />}
 			<center>
 				{events.map((event, index) => {
 					return (
-						<div onClick={() => setModal(event.id)}>
-							<Event key={"test" + index} data={event} />
+						<div
+							key={"test" + index}
+							onClick={() => fixModal(event.id)}
+							className="w-1/2 bg-purple-300"
+						>
+							<Event data={event} />
 						</div>
 
 					);

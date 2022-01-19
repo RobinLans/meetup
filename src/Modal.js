@@ -1,18 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { Modal } from 'semantic-ui-react';
+import { Modal, Segment } from 'semantic-ui-react';
 
 function Event(props) {
-	const [content, setContent] = useState(props.data); //Get from props
+	const [comments, setComments] = useState(props.data.comments); //Get from props
+
+	console.log(props.data.comments);
 
 	return (
 		<Modal
 			size="large"
 			onClose={props.canceled}
 			open={true}
+			className="p-5"
 		>
-			{content}
+			<h1 className="text-5xl">Comments</h1>
+			{comments.map((comment, index) => {
+				return (
+					<Segment key={"comment" + index}>
+						{comment}
+					</Segment>
+				);
+			})}
 		</Modal>
 	);
 }
