@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Modal, Segment } from "semantic-ui-react";
 import InputField from "./InputField";
+
+//Context
+import { eventsCtx } from "../Context";
 function Event(props) {
     const [comments, setComments] = useState(props.data.comments); //Get from props
+
+    const { events } = useContext(eventsCtx);
+
+    console.log("events from context", events);
 
     return (
         <Modal
