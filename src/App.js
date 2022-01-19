@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Event from "./components/Event";
 import Comment from "./components/Comment";
 import Modal from "./components/Modal";
-
 function App() {
     const [events, setEvents] = useState([
         {

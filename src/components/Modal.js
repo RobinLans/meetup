@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Segment } from "semantic-ui-react";
-
+import InputField from "./InputField";
 function Event(props) {
     const [comments, setComments] = useState(props.data.comments); //Get from props
 
@@ -17,6 +17,7 @@ function Event(props) {
             {comments.map((comment, index) => {
                 return <Segment key={"comment" + index}>{comment}</Segment>;
             })}
+            <InputField />
         </Modal>
     );
 }
