@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Comment from "./Comment";
+import React, { useState } from "react";
+
 import { Segment, Button } from "semantic-ui-react";
-import { data } from "autoprefixer";
+
 
 function Event(props) {
     const [comments, setComments] = useState(props.data.comments); //Get from props
@@ -10,10 +10,6 @@ function Event(props) {
     const [date, setDate] = useState(
         new Date(props.data.time * 1000).toLocaleDateString("sv")
     );
-
-    useEffect(() => {
-        props.updateParent(props.data.id);
-    }, []);
 
     return (
         <Segment>
