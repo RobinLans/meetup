@@ -8,7 +8,7 @@ function App() {
         {
             id: 1,
             name: "Bilkrockar",
-            joined: false,
+            joined: true,
             location: "Angered",
             time: 1644847298,
             comments: ["420 blz", "44"],
@@ -41,7 +41,9 @@ function App() {
     }
 
     function eventHasUpdated(id) {
-        console.log(id);
+        const moddedEvents = [...events];
+		moddedEvents[events.findIndex((item) => item.id === id)].joined = !moddedEvents[events.findIndex((item) => item.id === id)].joined;
+		setEvents([...events]);
     }
 
     return (
@@ -53,7 +55,7 @@ function App() {
                         <div
                             key={"test" + index}
                             onClick={() => fixModal(event.id)}
-                            className="w-1/2 bg-purple-300"
+                            className="w-1/3 bg-purple-300"
                         >
                             <Event
                                 data={event}

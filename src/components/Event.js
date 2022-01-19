@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Comment from "./Comment";
-import { Segment } from "semantic-ui-react";
+import { Segment, Button } from "semantic-ui-react";
 import { data } from "autoprefixer";
 
 function Event(props) {
@@ -20,9 +20,12 @@ function Event(props) {
             <h1 className="font-bold text-2xl">{props.data.name}</h1>
             <h2 className="text-xl">{props.data.location}</h2>
             <h2 className="text-xl">{date}</h2>
-            {comments.map((comment, index) => {
-                return <Comment key={"teste" + index} data={comment} />;
-            })}
+			{props.data.joined &&
+				<Button fluid color="red" onClick={() => props.updateParent(props.data.id)}>Lämna</Button>
+			}
+			{!props.data.joined &&
+				<Button fluid color="green" onClick={() => props.updateParent(props.data.id)}>Gå Med</Button>
+			}
         </Segment>
     );
 }
