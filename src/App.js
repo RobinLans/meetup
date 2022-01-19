@@ -20,9 +20,9 @@ function App() {
 		},
 		{
 			id: 2,
-			name: 'Bilkrockar',
+			name: 'Dreamhack',
 			joined: false,
-			location: 'Angered',
+			location: 'Orten',
 			time: 1644847298,
 			comments: [
 				'420 blz',
@@ -31,9 +31,9 @@ function App() {
 		},
 		{
 			id: 3,
-			name: 'Bilkrockar',
+			name: 'Snusträff',
 			joined: false,
-			location: 'Angered',
+			location: 'Luleå',
 			time: 1644847298,
 			comments: [
 				'420 blz',

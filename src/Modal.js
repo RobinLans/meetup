@@ -6,7 +6,6 @@ import { Modal } from 'semantic-ui-react';
 function Event(props) {
 	const [content, setContent] = useState(props.data); //Get from props
 
-
 	return (
 		<Modal
 			size="large"
