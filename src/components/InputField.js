@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {eventsCtx} from '../Context'
+function InputField(props) {
+        const { events } = useContext(eventsCtx);
 
-function InputField() {
+        console.log("events from context", events);
+        console.log("props", props);
   return (
     	<div className="flex w-full justify-center">
             <input className="w-2/3 h-10" placeholder="Write a comment"/>

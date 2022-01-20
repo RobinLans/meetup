@@ -1,16 +1,26 @@
 import React, { useState, useContext } from "react";
 import { Modal, Segment } from "semantic-ui-react";
-import InputField from "./InputField";
+
 
 //Context
 import { eventsCtx } from "../Context";
 function Event(props) {
     const [comments, setComments] = useState(props.data.comments); //Get from props
+    const [inputText, setInputText] = useState('')
+    const { events, setEvents } = useContext(eventsCtx);
 
-    const { events } = useContext(eventsCtx);
+    function addComment(id){
+        //make a copy of events
+        const moddedEvents =[...events]
+        //modify copied array with new comment
+        moddedEvents.find(x=> x.id===id).comments.push(inputText)
+        
+        //update events
+        setEvents([...moddedEvents])
 
-    console.log("events from context", events);
-
+        //reset input field
+        setInputText('')
+    }
     return (
         <Modal
             size="large"
@@ -22,7 +32,10 @@ function Event(props) {
             {comments.map((comment, index) => {
                 return <Segment key={"comment" + index}>{comment}</Segment>;
             })}
-            <InputField />
+        <div className="flex w-full justify-center">
+            <input onChange={event => setInputText(event.target.value)} className="w-2/3 h-10" placeholder="Write a comment"/>
+            <button onClick={()=> addComment(props.data.id)}className="w-auto bg-blue-300 p-3 rounded">Add comment</button>
+        </div>
         </Modal>
     );
 }
